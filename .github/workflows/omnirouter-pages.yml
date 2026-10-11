@@ -1,0 +1,34 @@
+name: Publish OmniRouter frontend
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['omnirouter/**', '.github/workflows/omnirouter-pages.yml']
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: omnirouter-pages
+  cancel-in-progress: true
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node omnirouter/build.mjs
+      - run: node --test omnirouter/backend/*.test.mjs
+      - run: node omnirouter/package-site.mjs
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: omnirouter/dist
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
