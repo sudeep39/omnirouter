@@ -128,7 +128,7 @@ The package step copies only `index.html`, `style.css` and `bundle.js` into `omn
 
 ## Hosting and live configuration
 
-GitHub Pages hosts the static frontend. The repository-root `.github/workflows/omnirouter-pages.yml` builds, tests, packages and deploys it when configured with GitHub Actions as the Pages source. Deployment has not been performed as part of this implementation. If this folder becomes its own repository, adjust workflow paths and command prefixes.
+GitHub Pages hosts the static frontend. The repository-root `.github/workflows/omnirouter-pages.yml` builds, tests, packages and deploys it when configured with GitHub Actions as the Pages source. The concept demo is published at https://sudeep39.github.io/omnirouter/ from the repository https://github.com/sudeep39/omnirouter. GitHub Pages hosts the static frontend; the Live Support backend requires separate hosting. If this folder becomes its own repository, adjust workflow paths and command prefixes.
 
 Live execution requires a separate HTTPS backend running Node 22 or newer. Copy `backend/.env.example` to `backend/.env` locally and configure:
 
