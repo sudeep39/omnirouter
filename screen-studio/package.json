@@ -1,0 +1,17 @@
+{
+  "name": "screen-studio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "test:browser": "node --test tests/browser.e2e.mjs"
+  },
+  "dependencies": {
+    "ffmpeg-static": "^5.2.0",
+    "ffprobe-static": "^3.1.0"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.64.0"
+  }
+}
